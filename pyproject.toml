@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+ 
+[project]
+name = "nanollm"
+version = "0.1.0"
+requires-python = ">=3.10"
+# torch is deliberately NOT listed: install the build that matches your CUDA setup
+# from pytorch.org (on Windows the plain PyPI wheel is CPU-only).
+dependencies = ["numpy", "tiktoken", "datasets", "tqdm", "matplotlib"]
+ 
+[project.scripts]
+nanollm = "nanollm.cli:main"
+ 
+[tool.setuptools.packages.find]
+include = ["nanollm*"]
+ 
