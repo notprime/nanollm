@@ -24,8 +24,6 @@ import os
 import multiprocess as mp
 import numpy as np
 import tiktoken
-from datasets import load_dataset
-from tqdm import tqdm
 
 
 # Worker-side globals
@@ -73,6 +71,8 @@ def parse_args(argv=None):
 
 
 def main(argv=None):
+    from datasets import load_dataset
+    from tqdm import tqdm
     args = parse_args(argv)
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -128,7 +128,7 @@ def main(argv=None):
             n_docs += 1
 
             if n_docs % args.flush_every == 0:
-                pbar.n = min(total_tokens, args.tartget_tokens)
+                pbar.n = min(total_tokens, args.target_tokens)
                 pbar.refresh()
 
             if total_tokens >= args.target_tokens:

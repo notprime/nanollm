@@ -99,13 +99,13 @@ def report_lengths(path, plot_path=None, windows=(128, 256, 512, 1024)):
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(argv)
+    p = argparse.ArgumentParser()
     p.add_argument("--data_dir", type=str, help="folder with train.bin / val.bin")
     p.add_argument("--block_size", type=int, default=64)
     p.add_argument("--batch_size", type=int, default=8)
     p.add_argument("--lengths_file", type=str, help=".bin file for the document-length report")
     p.add_argument("--plot", type=str, default=None, help="PNG path for the length histogram")
-    args = p.parse_args()
+    args = p.parse_args(argv)
 
     if not args.data_dir and not args.lengths_file:
         p.error("pass --data_dir and/or --lengths_file")

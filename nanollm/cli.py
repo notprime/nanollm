@@ -20,7 +20,7 @@ COMMANDS = {
 
 
 def main(argv=None):
-    argv = sys.args[1:] if argv is None else argv
+    argv = sys.argv[1:] if argv is None else argv
     if not argv or argv[0] in ("-h", "--help"):
         print("usage: nanollm <command> [options]\n\ncommands:")
         for name in COMMANDS:
